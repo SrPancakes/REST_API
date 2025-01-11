@@ -136,8 +136,6 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 ### **How to use this README**
-```
 1. Replace placeholders like `yourusername`, `yourjwtsecret`, and `yourpassword` with actual values.
 2. Add additional setup instructions if needed, such as steps for database migration or media hosting.
 3. Update the **Contact** section with your actual details.
-```
