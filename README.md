@@ -1,7 +1,7 @@
 
 # Private Streaming Platform API
 
-The **Private Streaming Platform API** is the backend for a self-hosted media streaming service, offering secure and scalable endpoints for user authentication, profile management, content access, and playback tracking. This API integrates seamlessly with media and database storage on a Synology NAS.
+The **Private Streaming Platform API** is the backend for a self-hosted media streaming service, offering secure and scalable endpoints for user authentication, profile management, content access, and playback tracking. While it integrates seamlessly with a Synology NAS for media and database hosting, this API can also be used with any MariaDB or MySQL database, providing full flexibility for deployment.
 
 ---
 
@@ -18,10 +18,10 @@ The **Private Streaming Platform API** is the backend for a self-hosted media st
 
 ## **Tech Stack**
 - **Backend**: Node.js with Express.js
-- **Database**: MariaDB (hosted on Synology NAS)
+- **Database**: MariaDB or MySQL (can be hosted on Synology NAS, cloud providers, or local servers)
 - **ORM**: Sequelize
 - **Authentication**: JSON Web Tokens (JWT)
-- **Static Media Hosting**: Integrated with Synology NAS or WebDAV
+- **Static Media Hosting**: Integrated with Synology NAS, WebDAV, or any static file server
 
 ---
 
@@ -62,7 +62,7 @@ API_BASE_URL=http://localhost:3000
 ```
 
 ### **4. Set Up the Database**
-Ensure MariaDB is running on your Synology NAS. Use the provided SQL scripts or Sequelize models to initialize the database schema.
+Ensure MariaDB or MySQL is running on your preferred host. Use the provided SQL scripts or Sequelize models to initialize the database schema.
 
 ```bash
 npm run db:init
