@@ -1,3 +1,4 @@
+
 # Private Streaming Platform API
 
 The **Private Streaming Platform API** is the backend for a self-hosted media streaming service, offering secure and scalable endpoints for user authentication, profile management, content access, and playback tracking. This API integrates seamlessly with media and database storage on a Synology NAS.
@@ -30,3 +31,113 @@ The **Private Streaming Platform API** is the backend for a self-hosted media st
 ```bash
 git clone https://github.com/yourusername/private-streaming-platform-api.git
 cd private-streaming-platform-api
+```
+
+### **2. Install Dependencies**
+Ensure Node.js and npm are installed on your system, then run:
+```bash
+npm install
+```
+
+### **3. Configure Environment Variables**
+Create a `.env` file in the root directory:
+```plaintext
+# Server
+PORT=3000
+NODE_ENV=development
+
+# Database
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=streaming_platform
+
+# JWT
+JWT_SECRET=yourjwtsecret
+JWT_EXPIRES_IN=1h
+
+# API
+API_BASE_URL=http://localhost:3000
+```
+
+### **4. Set Up the Database**
+Ensure MariaDB is running on your Synology NAS. Use the provided SQL scripts or Sequelize models to initialize the database schema.
+
+```bash
+npm run db:init
+```
+
+### **5. Start the Server**
+Run the server in development mode:
+```bash
+npm run dev
+```
+
+For production:
+```bash
+npm start
+```
+
+---
+
+## **API Endpoints**
+
+### **Authentication**
+| Method | Endpoint          | Description                  |
+|--------|--------------------|------------------------------|
+| POST   | `/api/auth/signup` | Register a new user          |
+| POST   | `/api/auth/login`  | Authenticate and get a token |
+
+### **Profile Management**
+| Method | Endpoint                     | Description                    |
+|--------|-------------------------------|--------------------------------|
+| GET    | `/api/profiles/:userId`       | Get profiles for a user        |
+| POST   | `/api/profiles/:userId`       | Create a new profile           |
+| PUT    | `/api/profiles/:profileId`    | Update a profile               |
+| DELETE | `/api/profiles/:profileId`    | Delete a profile               |
+
+### **Content Management**
+| Method | Endpoint                   | Description                           |
+|--------|-----------------------------|---------------------------------------|
+| GET    | `/api/content/movies`       | Get all movies                       |
+| GET    | `/api/content/movies/:id`   | Get a specific movie                 |
+| GET    | `/api/content/series`       | Get all series                       |
+| GET    | `/api/content/series/:id`   | Get a specific series with episodes  |
+
+### **Playback and Watchlist**
+| Method | Endpoint                         | Description                   |
+|--------|-----------------------------------|-------------------------------|
+| GET    | `/api/playback/:profileId`        | Get playback progress         |
+| POST   | `/api/playback/:profileId`        | Update playback progress      |
+| GET    | `/api/watchlist/:profileId`       | Get watchlist for a profile   |
+| POST   | `/api/watchlist/:profileId`       | Add content to watchlist      |
+
+### **Search and Recommendations**
+| Method | Endpoint                    | Description                     |
+|--------|------------------------------|---------------------------------|
+| GET    | `/api/search?query=string`  | Search content                 |
+| GET    | `/api/recommendations/:id`  | Get recommendations for a user |
+
+---
+
+## **Contributing**
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature-name`).
+3. Commit changes (`git commit -m "Add feature"`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
+
+---
+
+## **License**
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### **How to use this README**
+```
+1. Replace placeholders like `yourusername`, `yourjwtsecret`, and `yourpassword` with actual values.
+2. Add additional setup instructions if needed, such as steps for database migration or media hosting.
+3. Update the **Contact** section with your actual details.
+```
